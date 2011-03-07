@@ -3,12 +3,14 @@
 .clearfix:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0px}.clearfix{display:inline-block}* html .clearfix{height:1%}.clearfix{display:block}
 /**************************/
 
-body {padding:50px;font-family:arial}
-h1 {font-size:20px;font-weight:bold;margin-bottom:20px}
+body {padding:50px;font-family:verdana;background-color:#ebebeb}
+h1 {font-size:22px;font-weight:bold;margin-bottom:20px;font-family:'Trebuchet MS'}
 a {color:#666}
 a:hover {color:#000}
 p {margin-bottom:10px}
-label{cursor:pointer}
+label{cursor:pointer;font-size:14px}
 strong{font-weight:bold}
 .separator {overflow:hidden;height:25px;margin-bottom:25px;border-bottom:1px solid #999}
-#submit {padding:5px 15px;border:2px solid grey;font-size:14px;cursor:pointer;margin:10px;background-color:#ccc;color:#333;font-weight:bold}
+#submit {margin:0}
+#submit input {padding:5px 15px;border:2px solid grey;font-size:14px;cursor:pointer;background-color:#ccc;color:#333;font-weight:bold}
+#form {background-color:#fff;border:3px solid #ccc;padding:20px;margin-bottom:15px}
