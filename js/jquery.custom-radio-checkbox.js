@@ -7,52 +7,75 @@
 * http://www.gnu.org/licenses/gpl.html
 */ 
 var styledInputs = (function ($) {
-    var $this, fakeInput, inputType, checkedClass, ie = $.browser.msie, checkedPrefix = "-checked", labelInput;
+    var // checkbox
+		chs = $("input:checkbox").addClass("hideInput"), 
+		// radio
+		rds = $("input:radio").addClass("hideInput"),
+		// checkbox checked class
+		checkboxCheckedClass = "checkbox-checked" , 
+		// radio checked class
+		radioCheckedClass = "radio-checked", 
+		// fake input tag
+		fakeInputTag = $("<span>"),
+		// if ie
+		ie = $.browser.msie,
+		// fake checkbox
+		fakeCheckbox = fakeInputTag.clone().addClass("checkbox"),
+		// fake radio
+		fakeRadio = fakeInputTag.clone().addClass("radio"), 
+		// other vars
+		$this, fakeInputClone, lastRadioChecked = {};
+	
+	// ie does not check inputs inside label when missing attribute for="id"
+	if (ie) {
+		var labelInput;
+		$("label").click(function (e) {
+			e.preventDefault();
+			labelInput = $(this).find("input:checkbox, input:radio");
+			labelInput.attr("checked", !labelInput.is(":checked")).change();
+		});
+	}
+	
+	chs.each(function () {
+		$this = $(this);
 
-    $("input:checkbox, input:radio").each(function () {
-        $this = $(this);
-        
-        // ie does not check inputs inside label when missing attribute for="id"
-        if (ie) {
-            $this.parents("label")
-            .click(function (e) {
-				e.preventDefault();
-				labelInput = $(this).find("input:checkbox, input:radio");
-                labelInput.attr("checked", !labelInput.is(":checked")).change();
-            });
-        }
+		// fake input
+		fakeInputClone = fakeCheckbox.clone();
+		
+		// if is checked
+		if ($this[0].checked) fakeInputClone.addClass(checkboxCheckedClass);
+		
+		// insert fake input
+		this.parentNode.insertBefore( fakeInputClone[0], this );
 
-        // hide input
-        $this.hide();
+		// checkbox change event
+		$this.bind("change.styledCheckbox",function () {
+			$(this).prev().toggleClass(checkboxCheckedClass)
+		});
+	});
+	
 
-        // input type
-        inputType = $this.is(":checkbox") ? "checkbox" :
-                    $this.is(":radio") ? "radio" : "";
+	rds.each(function () {
+		$this = $(this);
+		
+		// fake input
+		fakeInputClone = fakeRadio.clone();
+		
+		// if is checked
+		if ($this[0].checked) {
+			// add checked class
+			fakeInputClone.addClass(radioCheckedClass);
+			// set to last checked radio
+			lastRadioChecked = fakeInputClone;
+		}
+		
+		// insert fake input
+		this.parentNode.insertBefore( fakeInputClone[0], this );
+		
 
-        // checked class
-        checkedClass = inputType + checkedPrefix;
-
-        // fake input
-        fakeInput = $("<span>").addClass(inputType).insertBefore($this);
-
-        // if is checked
-        if ($this.is(":checked")) fakeInput.addClass(checkedClass);
-
-        // checkbox change event
-        if (inputType == "checkbox") {
-            $this.bind("change.styledCheckbox",function () {
-                checkedClass = "checkbox" + checkedPrefix;
-                $(this).prev().toggleClass(checkedClass)
-            });
-        }
-
-        // radio change event
-        else if (inputType == "radio") {
-            $this.bind("change.styledRadio",function () {
-                checkedClass = "radio" + checkedPrefix;
-                $("input:radio[name=" + $(this).attr("name") + "]").prev().removeClass(checkedClass);
-                $(this).prev().addClass(checkedClass)
-            });
-        }
-    });
+		$this.bind("change.styledRadio",function () {
+			if(!$.isEmptyObject(lastRadioChecked)) lastRadioChecked.removeClass(radioCheckedClass);
+			lastRadioChecked = $(this).prev().addClass(radioCheckedClass)
+		});
+	});
 })(jQuery);
