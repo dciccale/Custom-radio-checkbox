@@ -2,18 +2,19 @@
 /* Custom radio-checkbox */
 .radio, .checkbox {
 	background: url(../images/radio-checkbox.png) no-repeat;
-	padding: 0 5px 0 0;
+	margin-right:5px;
 	top:3px;
-	/* don't need to modify this line */float:left;clear:left;position:relative;
+	width:14px; height:14px;
+	/* don't need to modify this line */float:left;position:relative;/* ie 6*/overflow:hidden;display:inline
 }
 
 /* radio */
-.radio {background-position:0 0;height:13px;width:13px}
-.radio-checked{background-position:0 -13px}
+.radio {background-position:0 0}
+.radio-checked{background-position:0 -14px}
 
 /* checkbox */
-.checkbox {background-position:-18px 0;height:15px;width:14px}
-.checkbox-checked {background-position:-18px -15px}
+.checkbox {background-position:-19px 0}
+.checkbox-checked {background-position:-19px -14px}
 
 /* hide class ( addClass() is faster than hide() ) */
 .hideInput {display:none}
