@@ -1,3 +1,9 @@
+jQuery Custom Radio Checkbox plugin
+---------------------------------------------------------
+* Accisble
+* Semantic HTML
+* Cross-browser (IE6+, FF, Chrome, Safari, Opera)
+
 Last code optimization tests with 200 radio & 200 checkbox:
 
 In milliseconds:
