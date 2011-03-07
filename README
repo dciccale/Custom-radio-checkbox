@@ -1,12 +1,9 @@
-
 Last code optimization tests with 200 radio & 200 checkbox:
 
 In milliseconds:
 Browser [Before | After]
 -----------------------------------------------------
-<ul>
-<li>Firefox 3.6 [290 | 138]</li>
-<li>Google Chrome 9 [464 | 27]</li>
-<li>Safari 5 [523 | 24]</li>
-<li>IE 8 [3140 | 345]</li>
-</ul>
+* Firefox 3.6 [290 | 138]
+* Google Chrome 9 [464 | 27]
+* Safari 5 [523 | 24]
+* IE 8 [3140 | 345]
