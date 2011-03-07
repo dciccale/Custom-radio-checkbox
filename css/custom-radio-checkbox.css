@@ -1,17 +1,19 @@
+/* REQUIRED CSS */
 /* Custom radio-checkbox */
 .radio, .checkbox {
-	padding: 0 5px 0 0;
 	background: url(../images/radio-checkbox.png) no-repeat;
-	display: block;
-	clear: left;
-	float: left;
-	position:relative;
-	top:3px
+	padding: 0 5px 0 0;
+	top:3px;
+	/* don't need to modify this line */float:left;clear:left;position:relative;
 }
+
 /* radio */
 .radio {background-position:0 0;height:13px;width:13px}
 .radio-checked{background-position:0 -13px}
+
 /* checkbox */
-.checkbox    {background-position:-18px 0;height:15px;width:14px}
+.checkbox {background-position:-18px 0;height:15px;width:14px}
 .checkbox-checked {background-position:-18px -15px}
-.none {display:none}
+
+/* hide class ( addClass() is faster than hide() ) */
+.hideInput {display:none}
