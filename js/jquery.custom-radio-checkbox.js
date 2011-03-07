@@ -19,6 +19,8 @@ var styledInputs = (function ($) {
 		fakeInputTag = $("<span>"),
 		// if ie
 		ie = $.browser.msie,
+		// if opera
+		opera = $.browser.opera,
 		// fake checkbox
 		fakeCheckbox = fakeInputTag.clone().addClass("checkbox"),
 		// fake radio
@@ -26,8 +28,8 @@ var styledInputs = (function ($) {
 		// other vars
 		$this, fakeInputClone, lastRadioChecked = {};
 	
-	// ie does not check inputs inside label when missing attribute for="id"
-	if (ie) {
+	// ie and opera does not check inputs inside label when missing attribute for="id" and when input is hidden
+	if (ie || opera) {
 		var labelInput;
 		$("label").click(function (e) {
 			e.preventDefault();
@@ -35,6 +37,7 @@ var styledInputs = (function ($) {
 			labelInput.attr("checked", !labelInput.is(":checked")).change();
 		});
 	}
+	
 	
 	chs.each(function () {
 		$this = $(this);
@@ -50,7 +53,7 @@ var styledInputs = (function ($) {
 
 		// checkbox change event
 		$this.bind("change.styledCheckbox",function () {
-			$(this).prev().toggleClass(checkboxCheckedClass)
+			$(this).prev().toggleClass(checkboxCheckedClass);
 		});
 	});
 	
@@ -75,7 +78,7 @@ var styledInputs = (function ($) {
 
 		$this.bind("change.styledRadio",function () {
 			if(!$.isEmptyObject(lastRadioChecked)) lastRadioChecked.removeClass(radioCheckedClass);
-			lastRadioChecked = $(this).prev().addClass(radioCheckedClass)
+			lastRadioChecked = $(this).prev().addClass(radioCheckedClass);
 		});
 	});
 })(jQuery);
