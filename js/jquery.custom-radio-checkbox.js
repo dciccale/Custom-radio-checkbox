@@ -26,9 +26,9 @@ var styledInputs = (function ($) {
 		// fake radio
 		fakeRadio = fakeInputTag.clone().addClass("radio"), 
 		// other vars
-		$this, fakeInputClone, lastRadioChecked = {};
+		$this, fakeInputClone;
 	
-	// ie and opera does not check inputs inside label when missing attribute for="id" and when input is hidden
+	// ie and opera does not toggle an input inside label when missing attribute for="id" and/or when the input is hidden with css
 	if (ie || opera) {
 		var labelInput;
 		$("label").click(function (e) {
@@ -57,7 +57,6 @@ var styledInputs = (function ($) {
 		});
 	});
 	
-
 	rds.each(function () {
 		$this = $(this);
 		
@@ -68,8 +67,6 @@ var styledInputs = (function ($) {
 		if ($this[0].checked) {
 			// add checked class
 			fakeInputClone.addClass(radioCheckedClass);
-			// set to last checked radio
-			lastRadioChecked = fakeInputClone;
 		}
 		
 		// insert fake input
@@ -77,8 +74,8 @@ var styledInputs = (function ($) {
 		
 
 		$this.bind("change.styledRadio",function () {
-			if(!$.isEmptyObject(lastRadioChecked)) lastRadioChecked.removeClass(radioCheckedClass);
-			lastRadioChecked = $(this).prev().addClass(radioCheckedClass);
+			$("input:radio[name=" + $(this).attr("name") + "]").prev().removeClass(radioCheckedClass);
+			$(this).prev().addClass(radioCheckedClass);
 		});
 	});
 })(jQuery);
