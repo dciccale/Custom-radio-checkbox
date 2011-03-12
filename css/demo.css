@@ -4,13 +4,19 @@
 /**************************/
 
 body {padding:50px;font-family:verdana;background-color:#ebebeb}
-h1 {font-size:22px;font-weight:bold;margin-bottom:20px;font-family:'Trebuchet MS'}
+h1,h2 {font-family:'Trebuchet MS';font-weight:bold}
+h1 {font-size:22px;margin-bottom:20px}
+h2 {font-size:18px;margin-bottom:10px}
 a {color:#666}
 a:hover {color:#000}
 p {margin-bottom:10px}
 label{cursor:pointer;font-size:14px}
 strong{font-weight:bold}
-.separator {overflow:hidden;height:25px;margin-bottom:25px;border-bottom:1px solid #999}
+.separator {overflow:hidden;height:25px;margin-bottom:25px;border-bottom:1px solid #999;clear:left}
 #submit {margin:0}
 #submit input {padding:5px 15px;border:2px solid grey;font-size:14px;cursor:pointer;background-color:#ccc;color:#333;font-weight:bold}
 #form {background-color:#fff;border:3px solid #ccc;padding:20px;margin-bottom:15px}
+
+.fl {float:left}
+.w200 {width:200px}
+.mr10 {margin-right:10px}
