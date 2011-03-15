@@ -17,14 +17,14 @@ var styledInputs = (function ($) {
 		radioCheckedClass = "radio-checked", 
 		// fake input tag
 		fakeInputTag = $("<span>"),
+		// fake checkbox
+		fakeCheckbox = fakeInputTag.clone().addClass("checkbox"),
+		// fake radio
+		fakeRadio = fakeInputTag.clone().addClass("radio"),
 		// if ie
 		ie = $.browser.msie,
 		// if opera
 		opera = $.browser.opera,
-		// fake checkbox
-		fakeCheckbox = fakeInputTag.clone().addClass("checkbox"),
-		// fake radio
-		fakeRadio = fakeInputTag.clone().addClass("radio"), 
 		// other vars
 		$this, fakeInputClone;
 	
@@ -34,7 +34,7 @@ var styledInputs = (function ($) {
 		$("label").click(function (e) {
 			e.preventDefault();
 			labelInput = $(this).find("input:checkbox, input:radio");
-			labelInput.attr("checked", !labelInput.is(":checked")).change();
+			labelInput.attr("checked", !labelInput[0].checked).change();
 		});
 	}
 	
