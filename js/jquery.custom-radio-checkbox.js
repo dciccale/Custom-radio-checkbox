@@ -29,63 +29,73 @@
 			// other vars
 			fakeInputClone;
 		
-		// ie and opera does not toggle an input inside label when missing attribute for="id" and/or when the input is hidden with css
-		if (ie || opera) {
-			var labelInput;
-			$("label").click(function (e) {
-				e.preventDefault();
-				labelInput = $(this).find("input:radio, input:checkbox");
-				// only if there is radio or checkbox
-				if(labelInput.length) {
-					// toggle checked attribute
-					labelInput[0].checked = !labelInput[0].checked; 
-					// fire change event
-					labelInput.change();
+		// only do this if there are radios
+		if(rds.length) {
+			// radio
+			rds.each(function () {			
+				// fake input
+				fakeInputClone = fakeRadio.clone();
+				
+				// if is checked
+				if (this.checked) {
+					// add checked class
+					fakeInputClone.addClass(radioCheckedClass);
 				}
+				
+				// insert fake input
+				this.parentNode.insertBefore( fakeInputClone[0], this );
+				
+				// radio change event
+				$(this).bind("change.styledRadio",function () {
+					// filter by name and remove class from the last radio checked
+					rds.filter("[name=" + this.name + "]").prev().removeClass(radioCheckedClass);
+					$(this).prev().addClass(radioCheckedClass);
+				});
 			});
 		}
 		
-		
-		// radio
-		rds.each(function () {			
-			// fake input
-			fakeInputClone = fakeRadio.clone();
-			
-			// if is checked
-			if (this.checked) {
-				// add checked class
-				fakeInputClone.addClass(radioCheckedClass);
-			}
-			
-			// insert fake input
-			this.parentNode.insertBefore( fakeInputClone[0], this );
-			
-			// radio change event
-			$(this).bind("change.styledRadio",function () {
-				// filter by name and remove class from the last radio checked
-				rds.filter("[name=" + this.name + "]").prev().removeClass(radioCheckedClass);
-				$(this).prev().addClass(radioCheckedClass);
-			});
-		});
-		
-		// checkbox
-		chs.each(function () {
-			// fake input
-			fakeInputClone = fakeCheckbox.clone();
-			
-			// if is checked
-			if (this.checked) {
-				// add checked class
-				fakeInputClone.addClass(checkboxCheckedClass);
-			}
-			
-			// insert fake input
-			this.parentNode.insertBefore( fakeInputClone[0], this );
+		// only do this if there are checkboxes
+		if(chs.length) {
+			// checkbox
+			chs.each(function () {
+				// fake input
+				fakeInputClone = fakeCheckbox.clone();
+				
+				// if is checked
+				if (this.checked) {
+					// add checked class
+					fakeInputClone.addClass(checkboxCheckedClass);
+				}
+				
+				// insert fake input
+				this.parentNode.insertBefore( fakeInputClone[0], this );
 
-			// checkbox change event
-			$(this).bind("change.styledCheckbox",function () {
-				$(this).prev().toggleClass(checkboxCheckedClass);
+				// checkbox change event
+				$(this).bind("change.styledCheckbox",function () {
+					$(this).prev().toggleClass(checkboxCheckedClass);
+				});
 			});
-		});
+		}
+		
+		// IE & OPERA fix
+		// only apply this if there are radios or checkboxes
+		if(rds.length || chs.length) {
+			// ie and opera does not toggle an input inside label when missing attribute for="id" and/or when the input is hidden with css
+			if (ie || opera) {
+				var labelInput;
+				$("label").click(function (e) {
+					e.preventDefault();
+					labelInput = $(this).find("input:radio, input:checkbox");
+					// only if there is radio or checkbox
+					if(labelInput.length) {
+						// toggle checked attribute
+						labelInput[0].checked = !labelInput[0].checked; 
+						// fire change event
+						labelInput.change();
+					}
+				});
+			}
+		}
+		
 	})();
 })(jQuery);
