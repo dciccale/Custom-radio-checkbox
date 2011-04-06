@@ -1,15 +1,7 @@
 jQuery Custom Radio Checkbox plugin
 ---------------------------------------------------------
-* Accissble
+* Accessible
 * Semantic HTML
 * Cross-browser (IE6+, FF, Chrome, Safari, Opera)
-
-Last code optimization tests with 200 radio & 200 checkbox:
-
-In milliseconds:
-Browser [Before | After]
------------------------------------------------------
-* Firefox 3.6 [290 | 138]
-* Google Chrome 9 [464 | 27]
-* Safari 5 [523 | 24]
-* IE 8 [3140 | 345]
+* Fast
+* Lightweight (748 bytes minified)
