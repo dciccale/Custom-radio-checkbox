@@ -77,25 +77,5 @@
 			});
 		}
 		
-		// IE & OPERA fix
-		// only apply this if there are radios or checkboxes
-		if(rds.length || chs.length) {
-			// ie and opera does not toggle an input inside label when missing attribute for="id" and/or when the input is hidden with css
-			if (ie || opera) {
-				var labelInput;
-				$("label").click(function (e) {
-					e.preventDefault();
-					labelInput = $(this).find("input:radio, input:checkbox");
-					// only if there is radio or checkbox
-					if(labelInput.length) {
-						// toggle checked attribute
-						labelInput[0].checked = !labelInput[0].checked; 
-						// fire change event
-						labelInput.change();
-					}
-				});
-			}
-		}
-		
 	})();
 })(jQuery);
