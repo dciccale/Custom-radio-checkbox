@@ -17,4 +17,4 @@
 .checkbox-checked {background-position:-19px -14px}
 
 /* hide input from view but still visible (ie & opera support) */
-.hideInput {position:absolute;z-index:-1}
+.hideInput {position:absolute;left:-999em}
