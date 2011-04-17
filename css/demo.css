@@ -7,7 +7,7 @@ body {padding:50px;font-family:verdana;background-color:#ebebeb}
 h1,h2 {font-family:'Trebuchet MS';font-weight:bold}
 h1 {font-size:22px;margin-bottom:20px}
 h2 {font-size:18px;margin-bottom:10px}
-a {color:##0000FF;text-decoration:underline}
+a {color:#0000FF;text-decoration:underline}
 a:hover {color:#000}
 p {margin-bottom:10px}
 label{cursor:pointer;font-size:14px}
