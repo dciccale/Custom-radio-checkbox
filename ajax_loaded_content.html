@@ -1,0 +1,79 @@
+<form method="post" action="" id="form">
+	<div class="fl w200 mr10">
+		<h2>Radio group 1</h2>
+		<p>
+			<label for="yes">
+				<input type="radio" name="radioGroup1" id="yes" value="Yes" />Yes
+			</label>
+		</p>
+		<p>
+			<label for="no">
+				<input type="radio" name="radioGroup1" id="no" value="No" />No
+			</label>
+		</p>
+		<p>
+			<label for="maybe">
+				<input type="radio" name="radioGroup1" id="maybe" value="Maybe" />Maybe
+			</label>
+		</p>
+	</div>
+
+	<div class="fl w200">
+		<h2>Radio group 2</h2>
+		<p>
+			<label for="uno">
+				<input type="radio" name="radioGroup2" id="uno" value="Uno" />Uno
+			</label>
+		</p>
+		<p>
+			<label for="dos">
+				<input type="radio" name="radioGroup2" id="dos" value="Dos" />Dos
+			</label>
+		</p>
+		<p>
+			<label for="tres">
+				<input type="radio" name="radioGroup2" id="tres" value="Tres" />Tres
+			</label>
+		</p>
+	</div>
+
+	<div class="separator"></div>
+
+	<!-- checkbox -->
+	<p>
+		<label for="checkbox1">
+			<input type="checkbox" name="Checkbox" id="checkbox1" value="1" />Checkbox 1
+		</label>
+	</p>
+	<p>
+		<label for="checkbox2">
+			<input type="checkbox" name="Checkbox" id="checkbox2" value="2" />Checkbox 2
+		</label>
+	</p>
+	<p>
+		<label for="checkbox3">
+			<input type="checkbox" name="Checkbox" id="checkbox3" value="3" />Checkbox 3
+		</label>
+	</p>
+
+	<div class="separator"></div>
+	<p id="submit"><input type="submit" value="Show result" /></p>
+</form>
+
+<script type="text/javascript">
+$(function() {
+	var result = $('#result'),
+		form = $('#form');
+		
+	// customize radio and checkbox for the loaded content
+	// handle the submit function to show the results
+	form
+	.customRadioCheckbox()
+	.submit(function(e) {
+		e.preventDefault();
+		result.html(form.serialize());
+	});
+});
+</script>
+			
+			
