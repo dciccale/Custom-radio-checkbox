@@ -59,21 +59,5 @@
 	<div class="separator"></div>
 	<p id="submit"><input type="submit" value="Show result" /></p>
 </form>
-
-<script type="text/javascript">
-$(function() {
-	var result = $('#result'),
-		form = $('#form');
-		
-	// customize radio and checkbox for the loaded content
-	// handle the submit function to show the results
-	form
-	.customRadioCheckbox()
-	.submit(function(e) {
-		e.preventDefault();
-		result.html(form.serialize());
-	});
-});
-</script>
 			
 			
