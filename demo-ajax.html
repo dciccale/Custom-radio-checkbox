@@ -11,6 +11,7 @@
 		<p id="menu"><strong>Demos:</strong> <a href="demo-input-inside-label.html">Input inside label</a> | <a href="demo-input-next-to-label.html">Input is next to label</a> | <span class="current-demo">Ajax loaded content</span></p>
 		<h2>Content loaded via AJAX</h2>
 		<p>*important: Use the 'for' attribute in labels to support IE & Opera</p>
+		<p>Use $('selector').customRadioCheckbox(); to replace radios & checkboxes after the content is loaded</p>
 		<ul id="tabs" class="clearfix">
 			<li><a href="#view" class="current">VIEW</a></li>
 			<li><a href="#html">HTML</a></li>
@@ -90,6 +91,7 @@
 					</code>
 				</pre>
 				<p>And the jQuery to load the content:</p>
+				<p>After loading the content, form.customRadioCheckbox() is called to replace radios & checkboxes</p>
 				<pre>
 					<code>
 $(function() {
