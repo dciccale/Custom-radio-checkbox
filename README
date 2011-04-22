@@ -9,4 +9,4 @@ jQuery Custom Radio Checkbox plugin
   - JS compressed: 812 bytes
   - Required css compressed: 383 bytes
   - Default image: 759 bytes
-* For ajax loaded content call $('selector').customRadioCheckbox(); (see demo_ajax.html)
+* For ajax loaded content call $('selector').customRadioCheckbox(); (see demo-ajax.html)
