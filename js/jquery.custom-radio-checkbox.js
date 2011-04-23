@@ -8,37 +8,44 @@
 */ 
 (function($) {
 	$.fn.customRadioCheckbox = (function () {
-		var	context = $("body"),
+	
+		var	context = $('body'),
 			// radio checked class
-			radioCheckedClass = "radio-checked", 
+			radioCheckedClass = 'radio-checked', 
 			// checkbox checked class
-			checkboxCheckedClass = "checkbox-checked", 
+			checkboxCheckedClass = 'checkbox-checked',
+			// function to force the input change when clicking on the fake input
+			forceChange = function() { 
+				// only trigger if the input is not inside
+				if (this.parentNode.nodeName.toLowerCase() != 'label') $(this.nextSibling).trigger('change.crc', [true]); 
+			},
 			// fake input tag
-			fakeInputTag = $("<span>"),
+			fakeInputTag = $('<i>').click(forceChange),
 			// fake radio
-			fakeRadio = fakeInputTag.clone().addClass("radio"),
+			fakeRadio = fakeInputTag.clone(true).addClass('radio'),
 			// fake checkbox
-			fakeCheckbox = fakeInputTag.clone().addClass("checkbox"),
-			// if ie
-			ie = $.browser.msie,
-			// if opera
-			opera = $.browser.opera,
-			// other vars
+			fakeCheckbox = fakeInputTag.clone(true).addClass('checkbox'),
+			// other var
 			fakeInputClone;
-				
+			
+			
 				
 		function customRadioCheckbox(context) {
+			// if context is defined means is the first init, if not use 'this'
 			context = context || this;
 			
-			var rds = context.find("input:radio").addClass("hideInput"), // radio
-				chs = context.find("input:checkbox").addClass("hideInput"); // checkbox
-				
+			// if context element is not present return nothing, can't chain anyway
+			if(!context.length) return;
+			
+			var rds = context.find('input:radio').addClass('hideInput'), // radio
+				chs = context.find('input:checkbox').addClass('hideInput'); // checkbox
+			
 			// only if there are radios
 			if(rds.length) {
 				// radio
 				rds.each(function () {			
 					// fake input
-					fakeInputClone = fakeRadio.clone();
+					fakeInputClone = fakeRadio.clone(true);
 					
 					// if is checked
 					if (this.checked) {
@@ -50,10 +57,15 @@
 					this.parentNode.insertBefore( fakeInputClone[0], this );
 					
 					// radio change event
-					$(this).bind("change.styledRadio",function () {
-						// filter by name and remove class from the last radio checked
-						rds.filter("[name=" + this.name + "]").prev().removeClass(radioCheckedClass);
-						$(this).prev().addClass(radioCheckedClass);
+					$(this).bind('change.crc', function (e, force) {
+						// uncheck previous and remove checked class
+						if (!force || !this.checked) {
+							// filter by name and remove class from the last radio checked
+							rds.filter('[name=' + this.name + ']').prev().removeClass(radioCheckedClass);
+							$(this).prev().addClass(radioCheckedClass);
+						}
+						// if force set to true and is not already checked, check the input
+						if (force && !this.checked) this.checked = true;
 					});
 				});
 			}
@@ -63,7 +75,7 @@
 				// checkbox
 				chs.each(function () {
 					// fake input
-					fakeInputClone = fakeCheckbox.clone();
+					fakeInputClone = fakeCheckbox.clone(true);
 					
 					// if is checked
 					if (this.checked) {
@@ -75,7 +87,13 @@
 					this.parentNode.insertBefore( fakeInputClone[0], this );
 
 					// checkbox change event
-					$(this).bind("change.styledCheckbox",function () {
+					$(this).bind('change.crc', function (e, force) {
+						// if force set to true, change the input
+						if (force) {
+							this.checked = !this.checked;
+						}
+						
+						// toggle the checkbox-checked class
 						$(this).prev().toggleClass(checkboxCheckedClass);
 					});
 				});
@@ -84,8 +102,11 @@
 			return context;
 		}
 		
+		// first init
 		customRadioCheckbox(context);
 		
+		// return the function for future calls
+		// for example on ajax callback for the loaded content if needed
 		return customRadioCheckbox;
 			
 	})();
