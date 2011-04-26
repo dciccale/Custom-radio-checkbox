@@ -36,8 +36,8 @@
 				}
 			},
 			// function that inserts the fake input
-			insertFakeInput = function(i, input, type) {
-				// fake checkbox
+			insertFakeInput = function(input, type) {
+				// fake input
 				var fakeInputClone = fakeInput[type].tag.clone(true);
 				
 				// if is already checked
@@ -65,7 +65,7 @@
 			if(rds.length) {
 				// insert each fake radio
 				$.each(rds, function (i, input) {
-					insertFakeInput(i, input, 'radio');
+					insertFakeInput(rds[i], 'radio');
 				});
 				
 				// bind radio change event
@@ -74,6 +74,7 @@
 					if (!force || !this.checked) {
 						// filter by name and remove class from the last radio checked
 						rds.filter('[name=' + this.name + ']').prev().removeClass(radioCheckedClass);
+						// add checked class to this input
 						$(this).prev().addClass(radioCheckedClass);
 					}
 					// if force set to true and is not already checked, check the input
@@ -84,16 +85,16 @@
 			// only if there are checkboxes
 			if(chs.length) {
 				// insert each fake checkbox
-				$.each(chs, function (i, input) {
-					insertFakeInput(i, input, 'checkbox');
+				$.each(chs, function (i) {
+					insertFakeInput(chs[i], 'checkbox');
 				});
 				
 				// bind checkbox change event
 				chs.bind('change.crc', function (e, force) {
-					// if force set to true, change the input
+					// if force set to true, change state
 					if (force) this.checked = !this.checked;
 					
-					// toggle the checkbox-checked class
+					// toggle checked class
 					$(this).prev().toggleClass(checkboxCheckedClass);
 				});
 			}
