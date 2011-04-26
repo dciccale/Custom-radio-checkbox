@@ -11,12 +11,10 @@
 	
 		var	// initial context
 			context = $('body'),
-			// you may pass an object with your own radioCheckedClass or checkboxCheckedClass
-			options = options || {},
 			// radio checked class
-			radioCheckedClass = options.radioCheckedClass || 'radio-checked', 
+			radioCheckedClass = 'radio-checked', 
 			// checkbox checked class
-			checkboxCheckedClass = options.checkboxCheckedClass || 'checkbox-checked',
+			checkboxCheckedClass = 'checkbox-checked',
 			// function to force the input change when clicking on the fake input
 			forceChange = function() {
 				// only trigger if the input is not inside a label
@@ -40,11 +38,8 @@
 				// fake input
 				var fakeInputClone = fakeInput[type].tag.clone(true);
 				
-				// if is already checked
-				if (input.checked) {
-					// add checked class
-					fakeInputClone.addClass(fakeInput[type].checkedClass);
-				}
+				// if is already checked add checked class
+				if (input.checked) fakeInputClone.addClass(fakeInput[type].checkedClass);
 				
 				// insert fake input
 				input.parentNode.insertBefore(fakeInputClone[0], input);
@@ -58,8 +53,8 @@
 			// if context element is not present return nothing, can't chain anyway
 			if(!context.length) return;
 			
-			var rds = context.find('input:radio').addClass('hideInput'), // radios
-				chs = context.find('input:checkbox').addClass('hideInput'); // checkboxes
+			var rds = context.find('input:radio').addClass('hideInput'), // find & hide radios
+				chs = context.find('input:checkbox').addClass('hideInput'); // find & hide checkboxes
 			
 			// only if there are radios
 			if(rds.length) {
