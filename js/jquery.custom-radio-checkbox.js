@@ -64,7 +64,7 @@
 			// only if there are radios
 			if(rds.length) {
 				// insert each fake radio
-				$.each(rds, function (i, input) {
+				$.each(rds, function (i) {
 					insertFakeInput(rds[i], 'radio');
 				});
 				
