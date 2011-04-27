@@ -1,22 +1,13 @@
 $(function() {
-	var result = $('#result'),
-		form = $('#form');
-		
-	form.submit(function(e) {
-		e.preventDefault();
-		result.html(form.serialize());
-	});
-	
-	
-	var sections = ['view','html'], section, lastTab,
+	var tabContainer = $('#tabs'),
+		sections = ['view','html'], section, lastTab,
 		tabClick = function(e) {
 			e.preventDefault();
 			tab = $(this),
-			section = tab.attr('href').replace('#','');
-			
+			section = tab.attr('href').replace('#','');			
 
 			if(!$.isEmptyObject(lastTab)) {
-				if(lastTab.attr('href').replace('#','') == section) return false;
+				if(lastTab.attr('href').replace('#','') == section) return;
 				lastTab.removeClass('current');
 			}
 			
@@ -29,7 +20,15 @@ $(function() {
 			lastTab = tab;
 		}
 		
-	$('#tabs').delegate('li > a', 'click', tabClick);
+	tabContainer.delegate('li > a', 'click', tabClick);
 	
-	$('#tabs').find('a:eq(0)').click();
+	tabContainer.find('a:eq(0)').click();
+	
+	var result = $('#result'),
+		form = $('#form');
+		
+	form.submit(function(e) {
+		e.preventDefault();
+		result.html(form.serialize());
+	});
 });
