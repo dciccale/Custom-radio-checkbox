@@ -12,37 +12,29 @@
 		var	// initial context
 			context = $('body'),
 			// radio checked class
-			radioCheckedClass = 'radio-checked', 
-			// checkbox checked class
-			checkboxCheckedClass = 'checkbox-checked',
+			checkedPrefix = '-checked',
 			// function to force the input change when clicking on the fake input
 			forceChange = function() {
 				// only trigger if the input is not inside a label
-				if (this.parentNode.nodeName.toLowerCase() != 'label') $(this.nextSibling).trigger('change.crc', [true]); 
+				if (this.parentNode.nodeName.toLowerCase() != 'label') $(this.previousSibling).trigger('change.crc', [true]); 
 			},
 			// fake input tag
 			fakeInputTag = $(document.createElement('i')).click(forceChange),
 			// object with each fake input and checked class
 			fakeInput = {
-				radio: {
-					tag: fakeInputTag.clone(true).addClass('radio'),
-					checkedClass: radioCheckedClass
-				},
-				checkbox: {
-					tag: fakeInputTag.clone(true).addClass('checkbox'),
-					checkedClass: checkboxCheckedClass
-				}
+				radio: fakeInputTag.clone(true).addClass('radio'),
+				checkbox: fakeInputTag.clone(true).addClass('checkbox')
 			},
 			// function that inserts the fake input
 			insertFakeInput = function(input, type) {
 				// fake input
-				var fakeInputClone = fakeInput[type].tag.clone(true);
+				var fakeInputClone = fakeInput[type].clone(true);
 				
 				// if is already checked add checked class
-				if (input.checked) fakeInputClone.addClass(fakeInput[type].checkedClass);
+				if (input.checked) fakeInputClone.addClass(type + checkedPrefix);
 				
-				// insert fake input
-				input.parentNode.insertBefore(fakeInputClone[0], input);
+				// insert the fake input after the input
+				input.parentNode.insertBefore(fakeInputClone[0], input.nextSibling);
 			};
 			
 		// the main function
@@ -58,9 +50,10 @@
 			
 			// only if there are radios
 			if(rds.length) {
+				rds.type = 'radio';
 				// insert each fake radio
 				$.each(rds, function (i) {
-					insertFakeInput(rds[i], 'radio');
+					insertFakeInput(rds[i], rds.type);
 				});
 				
 				// bind radio change event
@@ -68,9 +61,9 @@
 					// uncheck previous and remove checked class
 					if (!force || !this.checked) {
 						// filter by name and remove class from the last radio checked
-						rds.filter('[name=' + this.name + ']').prev().removeClass(radioCheckedClass);
+						rds.filter('[name=' + this.name + ']').next().removeClass(rds.type + checkedPrefix);
 						// add checked class to this input
-						$(this).prev().addClass(radioCheckedClass);
+						$(this).next().addClass(rds.type + checkedPrefix);
 					}
 					// if force set to true and is not already checked, check the input
 					if (force && !this.checked) this.checked = true;
@@ -79,9 +72,10 @@
 			
 			// only if there are checkboxes
 			if(chs.length) {
+				chs.type = 'checkbox';
 				// insert each fake checkbox
 				$.each(chs, function (i) {
-					insertFakeInput(chs[i], 'checkbox');
+					insertFakeInput(chs[i], chs.type);
 				});
 				
 				// bind checkbox change event
@@ -90,7 +84,7 @@
 					if (force) this.checked = !this.checked;
 					
 					// toggle checked class
-					$(this).prev().toggleClass(checkboxCheckedClass);
+					$(this).next().toggleClass(chs.type + checkedPrefix);
 				});
 			}
 			
