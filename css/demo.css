@@ -10,7 +10,8 @@ h2 {font-size:18px;margin-bottom:10px}
 a {color:#0000FF;text-decoration:underline}
 a:hover {color:#000}
 #menu {padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #ccc;font-family:arial}
-#menu .current-demo {background-color:#769CB6;color:#FFFFFF;padding:5px}
+#menu a {margin:0 5px}
+#menu .current-demo {text-decoration:none;background-color:#769CB6;color:#FFFFFF;padding:5px;margin:0;cursor:default}
 #content {background-color:#fff;border:3px solid #ccc;padding:20px}
 p {margin:10px 0}
 label{cursor:pointer;font-size:14px}
@@ -19,17 +20,22 @@ strong{font-weight:bold}
 #submit {margin:0}
 #submit input {padding:5px 15px;border:2px solid grey;font-size:14px;cursor:pointer;background-color:#ccc;color:#333;font-weight:bold}
 #form {margin-bottom:15px}
-#demo_ajax {width:600px;height:250px;border:3px solid #999;overflow:auto;margin-bottom:15px;background-color:#fff;padding:30px}
+#demo_ajax {width:600px;height:250px;border:3px solid #999;overflow:auto;margin-bottom:15px;background-color:#fff;padding:30px;position:relative}
 pre {background-color:#333;color:#ccc}
 
+/* view/code tabs */
 #tabs {position:relative;bottom:-3px}
 #tabs li {float:left;display:inline;margin-right:10px}
 #tabs .last {margin-right:0}
 #tabs a {float:left;padding:5px;background-color:#fff;border:3px solid #ccc}
-#tabs .current {border-bottom:0;padding-bottom:8px;text-decoration:none;color:#333}
+#tabs .current {border-bottom:0;padding-bottom:8px;text-decoration:none;color:#333;cursor:default}
 .section {display:none}
 code {font-family:"Courier New",Courier,monospace}
 
+/* demo3 */
+#demo3 label {display:inline}
+
+/* properties */
 .fl {float:left}
 .w200 {width:200px}
 .mr10 {margin-right:10px}
