@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Demo 3 - Custom Radio-Checkbox Plugin</title>
+		<link href="css/demo.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="css/custom-radio-checkbox.css" rel="stylesheet" type="text/css" media="screen" />
+	</head>
+
+	<body id="demo3">
+		<a href="http://github.com/dciccale/Custom-radio-checkbox"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+		<h1>Custom Radio-Checkbox Plugin</h1>
+		
+		<p id="menu">
+			<a href="index.html" title="input inside label">Demo 1</a>
+			<a href="demo2.html" title="input inside label without 'for' attribute">Demo 2</a>
+			<a class="current-demo" href="demo3.html" title="label next to input">Demo 3</a>
+			<a href="demo4.html" title="ajax loaded content">Demo 4</a>
+		</p>
+		
+		<h2>The <code>&lt;label&gt;</code> is next to the <code>&lt;input&gt;</code></h2>
+		<p>*important: in this case the <code>&quot;for&quot;</code> attribute in the <code>&lt;label&gt;</code> is required</p>
+		<ul id="tabs" class="clearfix">
+			<li><a href="#view" class="current">VIEW</a></li>
+			<li><a href="#html">HTML</a></li>
+		</ul>
+		<div id="content">
+			<div id="view" class="section">
+				<form method="post" action="" id="form">
+					<div class="fl w200 mr10">
+						<h2>Radio group 1</h2>
+						<p>
+							<input type="radio" name="radioGroup1" id="yes" value="Yes" />
+							<label for="yes">Yes</label>
+						</p>
+						<p>
+							<input type="radio" name="radioGroup1" id="no" value="No" />
+							<label for="no">No</label>
+						</p>
+						<p>
+							<input type="radio" name="radioGroup1" id="maybe" value="Maybe" />
+							<label for="maybe">Maybe</label>
+						</p>
+					</div>
+					
+					<div class="fl w200">
+						<h2>Radio group 2</h2>
+						<p>
+							<input type="radio" name="radioGroup2" id="uno" value="Uno" />
+							<label for="uno">Uno</label>
+						</p>
+						<p>
+							<input type="radio" name="radioGroup2" id="dos" value="Dos" />
+							<label for="dos">Dos</label>
+						</p>
+						<p>
+							<input type="radio" name="radioGroup2" id="tres" value="Tres" />
+							<label for="tres">Tres</label>
+						</p>
+					</div>
+					
+					<div class="separator"></div>
+					
+					<!-- checkbox -->
+					<p>
+						<input type="checkbox" name="Checkbox" id="checkbox1" value="1" />
+						<label for="checkbox1">Checkbox 1</label>
+					</p>
+					<p>
+						<input type="checkbox" name="Checkbox" id="checkbox2" value="2" />
+						<label for="checkbox2">Checkbox 2</label>
+					</p>
+					<p>
+						<input type="checkbox" name="Checkbox" id="checkbox3" value="3" />
+						<label for="checkbox3">Checkbox 3</label>
+					</p>
+					
+					<div class="separator"></div>
+					<p id="submit"><input type="submit" value="Show result" /></p>
+				</form>
+				<p><strong>Form result:</strong> <span id="result"></span></p>
+			</div>
+			<div id="html" class="section">
+				<pre>
+					<code>
+&lt;form method=&quot;post&quot; action=&quot;&quot; id=&quot;form&quot;&gt;
+	&lt;div class=&quot;fl w200 mr10&quot;&gt;
+		&lt;h2&gt;Radio group 1&lt;/h2&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;yes&quot;&gt;Yes&lt;/label&gt;
+			&lt;input type=&quot;radio&quot; name=&quot;radioGroup1&quot; id=&quot;yes&quot; value=&quot;Yes&quot; /&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;no&quot;&gt;No&lt;/label&gt;
+			&lt;input type=&quot;radio&quot; name=&quot;radioGroup1&quot; id=&quot;no&quot; value=&quot;No&quot; /&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;maybe&quot;&gt;Maybe&lt;/label&gt;
+			&lt;input type=&quot;radio&quot; name=&quot;radioGroup1&quot; id=&quot;maybe&quot; value=&quot;Maybe&quot; /&gt;
+		&lt;/p&gt;
+	&lt;/div&gt;
+	
+	&lt;div class=&quot;fl w200&quot;&gt;
+		&lt;h2&gt;Radio group 2&lt;/h2&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;uno&quot;&gt;Uno&lt;/label&gt;
+			&lt;input type=&quot;radio&quot; name=&quot;radioGroup2&quot; id=&quot;uno&quot; value=&quot;Uno&quot; /&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;dos&quot;&gt;Dos&lt;/label&gt;
+			&lt;input type=&quot;radio&quot; name=&quot;radioGroup2&quot; id=&quot;dos&quot; value=&quot;Dos&quot; /&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;tres&quot;&gt;Tres&lt;/label&gt;
+			&lt;input type=&quot;radio&quot; name=&quot;radioGroup2&quot; id=&quot;tres&quot; value=&quot;Tres&quot; /&gt;
+		&lt;/p&gt;
+	&lt;/div&gt;
+	
+	&lt;div class=&quot;separator&quot;&gt;&lt;/div&gt;
+	
+	&lt;!-- checkbox --&gt;
+	&lt;p&gt;
+		&lt;label for=&quot;checkbox1&quot;&gt;Checkbox 1&lt;/label&gt;
+		&lt;input type=&quot;checkbox&quot; name=&quot;Checkbox&quot; id=&quot;checkbox1&quot; value=&quot;1&quot; /&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;label for=&quot;checkbox2&quot;&gt;Checkbox 2&lt;/label&gt;
+		&lt;input type=&quot;checkbox&quot; name=&quot;Checkbox&quot; id=&quot;checkbox2&quot; value=&quot;2&quot; /&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;label for=&quot;checkbox3&quot;&gt;Checkbox 3&lt;/label&gt;
+		&lt;input type=&quot;checkbox&quot; name=&quot;Checkbox&quot; id=&quot;checkbox3&quot; value=&quot;3&quot; /&gt;
+	&lt;/p&gt;
+	
+	&lt;div class=&quot;separator&quot;&gt;&lt;/div&gt;
+	&lt;p id=&quot;submit&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Show result&quot; /&gt;&lt;/p&gt;
+&lt;/form&gt;
+&lt;p&gt;&lt;strong&gt;Form result:&lt;/strong&gt; &lt;span id=&quot;result&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+					</code>
+				</pre>
+			</div>
+		</div>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript">window.jQuery || document.write('<script src="js/jquery.min.js" type="text/javascript">\x3C/script>')</script>
+		<script src="js/jquery.custom-radio-checkbox.js" type="text/javascript"></script>
+		<script src="js/demo.js" type="text/javascript"></script>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+/* REQUIRED CSS */
+/* Custom radio-checkbox */
+.radio, .checkbox {
+	background: url(../images/radio-checkbox.png) no-repeat;
+	margin-right:5px;
+	top:3px;
+	width:14px; height:14px;
+	/* don't need to modify this line */float:left;position:relative;/* ie 6*/overflow:hidden
+}
+
+/* radio */
+.radio {background-position:0 0}
+.radio-checked{background-position:0 -14px}
+
+/* checkbox */
+.checkbox {background-position:-19px 0}
+.checkbox-checked {background-position:-19px -14px}
+
+/* hide input from view but still visible (ie & opera support) */
+.hideInput {position:absolute;left:-999em}

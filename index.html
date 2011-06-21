@@ -1,77 +1,166 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset='utf-8'>
+	<head>
+		<title>Demo 1 - Custom Radio-Checkbox Plugin</title>
+		<link href="css/demo.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="css/custom-radio-checkbox.css" rel="stylesheet" type="text/css" media="screen" />
+	</head>
 
-  <title>dciccale/Custom-radio-checkbox @ GitHub</title>
+	<body>
+		<a href="http://github.com/dciccale/Custom-radio-checkbox"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+		<h1>Custom Radio-Checkbox Plugin</h1>
+		
+		<p id="menu">
+			<a class="current-demo" href="demo1.html" title="input inside label">Demo 1</a>
+			<a href="demo2.html" title="input inside label without 'for' attribute">Demo 2</a>
+			<a href="demo3.html" title="label next to input">Demo 3</a>
+			<a href="demo4.html" title="ajax loaded content">Demo 4</a>
+		</p>
+		
+		<h2>The <code>&lt;input&gt;</code> is inside the <code>&lt;label&gt;</code></h2>
+		<p>*important: Use the <code>&quot;for&quot;</code> attribute in the <code>&lt;label&gt;</code> to support IE6</p>
+		<ul id="tabs" class="clearfix">
+			<li><a href="#view" class="current">VIEW</a></li>
+			<li><a href="#html">HTML</a></li>
+		</ul>
+		<div id="content">
+			<div id="view" class="section">
+				<form method="post" action="" id="form">
+					<div class="fl w200 mr10">
+						<h2>Radio group 1</h2>
+						<p>
+							<label for="yes">
+								<input type="radio" name="radioGroup1" id="yes" value="Yes" />Yes
+							</label>
+						</p>
+						<p>
+							<label for="no">
+								<input type="radio" name="radioGroup1" id="no" value="No" />No
+							</label>
+						</p>
+						<p>
+							<label for="maybe">
+								<input type="radio" name="radioGroup1" id="maybe" value="Maybe" />Maybe
+							</label>
+						</p>
+					</div>
+					
+					<div class="fl w200">
+						<h2>Radio group 2</h2>
+						<p>
+							<label for="uno">
+								<input type="radio" name="radioGroup2" id="uno" value="Uno" />Uno
+							</label>
+						</p>
+						<p>
+							<label for="dos">
+								<input type="radio" name="radioGroup2" id="dos" value="Dos" />Dos
+							</label>
+						</p>
+						<p>
+							<label for="tres">
+								<input type="radio" name="radioGroup2" id="tres" value="Tres" />Tres
+							</label>
+						</p>
+					</div>
+					
+					<div class="separator"></div>
+					
+					<!-- checkbox -->
+					<p>
+						<label for="checkbox1">
+							<input type="checkbox" name="Checkbox" id="checkbox1" value="1" />Checkbox 1
+						</label>
+					</p>
+					<p>
+						<label for="checkbox2">
+							<input type="checkbox" name="Checkbox" id="checkbox2" value="2" />Checkbox 2
+						</label>
+					</p>
+					<p>
+						<label for="checkbox3">
+							<input type="checkbox" name="Checkbox" id="checkbox3" value="3" />Checkbox 3
+						</label>
+					</p>
+					
+					<div class="separator"></div>
+					<p id="submit"><input type="submit" value="Show result" /></p>
+				</form>
+				<p><strong>Form result:</strong> <span id="result"></span></p>
+			</div>
+			<div id="html" class="section">
+				<pre>
+					<code>
+&lt;form method=&quot;post&quot; action=&quot;&quot; id=&quot;form&quot;&gt;
+	&lt;div class=&quot;fl w200 mr10&quot;&gt;
+		&lt;h2&gt;Radio group 1&lt;/h2&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;yes&quot;&gt;
+				&lt;input type=&quot;radio&quot; name=&quot;radioGroup1&quot; id=&quot;yes&quot; value=&quot;Yes&quot; /&gt;Yes
+			&lt;/label&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;no&quot;&gt;
+				&lt;input type=&quot;radio&quot; name=&quot;radioGroup1&quot; id=&quot;no&quot; value=&quot;No&quot; /&gt;No
+			&lt;/label&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;maybe&quot;&gt;
+				&lt;input type=&quot;radio&quot; name=&quot;radioGroup1&quot; id=&quot;maybe&quot; value=&quot;Maybe&quot; /&gt;Maybe
+			&lt;/label&gt;
+		&lt;/p&gt;
+	&lt;/div&gt;
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #383715;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #c7c8ea; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #c7c8ea; }
-    h3 { text-align: center; color: #c7c8ea; }
-    a { color: #c7c8ea; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
+	&lt;div class=&quot;fl w200&quot;&gt;
+		&lt;h2&gt;Radio group 2&lt;/h2&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;uno&quot;&gt;
+				&lt;input type=&quot;radio&quot; name=&quot;radioGroup2&quot; id=&quot;uno&quot; value=&quot;Uno&quot; /&gt;Uno
+			&lt;/label&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;dos&quot;&gt;
+				&lt;input type=&quot;radio&quot; name=&quot;radioGroup2&quot; id=&quot;dos&quot; value=&quot;Dos&quot; /&gt;Dos
+			&lt;/label&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;label for=&quot;tres&quot;&gt;
+				&lt;input type=&quot;radio&quot; name=&quot;radioGroup2&quot; id=&quot;tres&quot; value=&quot;Tres&quot; /&gt;Tres
+			&lt;/label&gt;
+		&lt;/p&gt;
+	&lt;/div&gt;
 
-<body>
-  <a href="http://github.com/dciccale/Custom-radio-checkbox"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+	&lt;div class=&quot;separator&quot;&gt;&lt;/div&gt;
 
-  <div id="container">
+	&lt;!-- checkbox --&gt;
+	&lt;p&gt;
+		&lt;label for=&quot;checkbox1&quot;&gt;
+			&lt;input type=&quot;checkbox&quot; name=&quot;Checkbox&quot; id=&quot;checkbox1&quot; value=&quot;1&quot; /&gt;Checkbox 1
+		&lt;/label&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;label for=&quot;checkbox2&quot;&gt;
+			&lt;input type=&quot;checkbox&quot; name=&quot;Checkbox&quot; id=&quot;checkbox2&quot; value=&quot;2&quot; /&gt;Checkbox 2
+		&lt;/label&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+		&lt;label for=&quot;checkbox3&quot;&gt;
+			&lt;input type=&quot;checkbox&quot; name=&quot;Checkbox&quot; id=&quot;checkbox3&quot; value=&quot;3&quot; /&gt;Checkbox 3
+		&lt;/label&gt;
+	&lt;/p&gt;
 
-    <div class="download">
-      <a href="http://github.com/dciccale/Custom-radio-checkbox/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/dciccale/Custom-radio-checkbox/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="http://github.com/dciccale/Custom-radio-checkbox">Custom-radio-checkbox</a>
-      <span class="small">by <a href="http://github.com/dciccale">dciccale</a></span></h1>
-
-    <div class="description">
-      jQuery plugin to customize native radios and checkboxes with your own design
-    </div>
-
-    <h2>Authors</h2>
-<p>dciccale (dciccale@gmail.com)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Denis Ciccale (dciccale@gmail.com)<br/>      </p>
-
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/dciccale/Custom-radio-checkbox/zipball/master">zip</a> or
-      <a href="http://github.com/dciccale/Custom-radio-checkbox/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/dciccale/Custom-radio-checkbox</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/dciccale/Custom-radio-checkbox">dciccale/Custom-radio-checkbox</a>
-    </div>
-
-  </div>
-
-  
-</body>
+	&lt;div class=&quot;separator&quot;&gt;&lt;/div&gt;
+	&lt;p id=&quot;submit&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Show result&quot; /&gt;&lt;/p&gt;
+&lt;/form&gt;
+&lt;p&gt;&lt;strong&gt;Form result:&lt;/strong&gt; &lt;span id=&quot;result&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+					</code>
+				</pre>
+			</div>
+		</div>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript">window.jQuery || document.write('<script src="js/jquery.min.js" type="text/javascript">\x3C/script>')</script>
+		<script src="js/jquery.custom-radio-checkbox.js" type="text/javascript"></script>
+		<script src="js/demo.js" type="text/javascript"></script>
+	</body>
 </html>

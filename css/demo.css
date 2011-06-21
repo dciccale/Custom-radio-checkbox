@@ -1,0 +1,42 @@
+/**** RESET + CLEARFIX ****/
+*{margin:0;padding:0;outline:0;font-size:1em;font-weight:normal;font-style:normal;border:0;text-decoration:none;list-style-type:none}
+.clearfix:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0px}.clearfix{display:inline-block}* html .clearfix{height:1%}.clearfix{display:block}
+/**************************/
+
+body {padding:30px;font-family:verdana;background-color:#ebebeb}
+h1,h2 {font-family:'Trebuchet MS';font-weight:bold}
+h1 {font-size:22px;margin-bottom:20px}
+h2 {font-size:18px;margin-bottom:10px}
+a {color:#0000FF;text-decoration:underline}
+a:hover {color:#000}
+#menu {padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #ccc;font-family:arial}
+#menu a {margin:0 5px}
+#menu .current-demo {text-decoration:none;background-color:#769CB6;color:#FFFFFF;padding:5px;margin:0;cursor:default}
+#content {background-color:#fff;border:3px solid #ccc;padding:20px}
+p {margin:10px 0}
+label{cursor:pointer;font-size:14px}
+strong{font-weight:bold}
+.separator {overflow:hidden;height:25px;margin-bottom:25px;border-bottom:1px solid #999;clear:left}
+#submit {margin:0}
+#submit input {padding:5px 15px;border:2px solid grey;font-size:14px;cursor:pointer;background-color:#ccc;color:#333;font-weight:bold}
+#form {margin-bottom:15px}
+#demo_ajax {width:600px;height:250px;border:3px solid #999;overflow:auto;margin-bottom:15px;background-color:#fff;padding:30px;position:relative}
+pre {background-color:#333;color:#ccc}
+
+/* view/code tabs */
+#tabs {position:relative;bottom:-3px}
+#tabs li {float:left;display:inline;margin-right:10px}
+#tabs .last {margin-right:0}
+#tabs a {float:left;padding:5px;background-color:#fff;border:3px solid #ccc}
+#tabs .current {border-bottom:0;padding-bottom:8px;text-decoration:none;color:#333;cursor:default}
+.section {display:none}
+code {font-family:"Courier New",Courier,monospace}
+
+/* demo3 */
+#demo3 label {display:inline}
+
+/* properties */
+.fl {float:left}
+.w200 {width:200px}
+.mr10 {margin-right:10px}
+.hidden {display:none}
