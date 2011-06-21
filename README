@@ -1,0 +1,12 @@
+jQuery Custom Radio Checkbox plugin
+---------------------------------------------------------
+* Accessible
+* Semantic HTML
+* Cross-browser (IE6+, FF, Chrome, Safari, Opera)
+* Fast
+* Easy to use (auto-initialize, include required files into your website and you're done)
+* Lightweight:
+  - JS compressed: 1kb
+  - Required css compressed: 368 bytes
+  - Default image: 759 bytes
+* For ajax loaded content call $('selector').customRadioCheckbox(); (see demo-ajax.html)
