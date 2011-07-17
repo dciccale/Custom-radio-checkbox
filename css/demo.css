@@ -34,6 +34,7 @@ code {font-family:"Courier New",Courier,monospace}
 
 /* demo3 */
 #demo3 label {display:inline}
+#demo3 .radio, #demo3 .checkbox {cursor:pointer}
 
 /* properties */
 .fl {float:left}
