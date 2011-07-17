@@ -2,19 +2,18 @@
 /* Custom radio-checkbox */
 .radio, .checkbox {
 	background: url(../img/radio-checkbox.png) no-repeat;
-	margin-right:5px;
-	top:3px;
-	width:14px; height:14px;
-	/* don't need to modify this line */float:left;position:relative;/* ie 6*/overflow:hidden
+	width:12px; height:12px; /* width and height of one radio/checkbox */
+	margin:3px 5px 0 0;
+	/* don't modify this line */float:left;/* ie 6*/overflow:hidden
 }
 
 /* radio */
 .radio {background-position:0 0}
-.radio-checked{background-position:0 -14px}
+.radio-checked{background-position:0 -12px}
 
 /* checkbox */
-.checkbox {background-position:-19px 0}
-.checkbox-checked {background-position:-19px -14px}
+.checkbox {background-position:-12px 0}
+.checkbox-checked {background-position:-12px -12px}
 
 /* hide input from view but still visible (ie & opera support) */
 .hideInput {position:absolute;left:-999em}
