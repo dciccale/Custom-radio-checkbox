@@ -8,18 +8,17 @@
 */ 
 (function($) {
 	$.fn.customRadioCheckbox = (function (options) {
-	
 		var	// initial context
 			context = $('body'),
-			// radio checked class
+			// checked prefix
 			checkedPrefix = '-checked',
 			// function to force the input change when clicking on the fake input
 			forceChange = function() {
 				// only trigger if the input is not inside a label
-				if (this.parentNode.nodeName.toLowerCase() != 'label') $(this.previousSibling).trigger('change.crc', [true]); 
+				if (this.parentNode.nodeName.toLowerCase() !== 'label') $(this.previousSibling).trigger('change.crc', [true]); 
 			},
 			// fake input tag
-			fakeInputTag = $(document.createElement('i')).click(forceChange),
+			fakeInputTag = $(document.createElement('i')).bind('click.crc', forceChange),
 			// object with each fake input and checked class
 			fakeInput = {
 				radio: fakeInputTag.clone(true).addClass('radio'),
@@ -38,9 +37,9 @@
 			};
 			
 		// the main function
-		function customRadioCheckbox(context) {
+		function customRadioCheckbox(_context) {
 			// if context is defined means is the first init, if not use 'this'
-			context = context || this;
+			var context = _context || this;
 			
 			// if context element is not present return nothing, can't chain anyway
 			if(!context.length) return;
@@ -57,7 +56,7 @@
 				});
 				
 				// bind radio change event
-				rds.bind('change.crc', function (e, force) {
+				context.delegate('input:' + rds.type, 'change.crc', function (e, force) {
 					// uncheck previous and remove checked class
 					if (!force || !this.checked) {
 						// filter by name and remove class from the last radio checked
@@ -79,7 +78,7 @@
 				});
 				
 				// bind checkbox change event
-				chs.bind('change.crc', function (e, force) {
+				context.delegate('input:' + chs.type, 'change.crc', function (e, force) {
 					// if force set to true, change state
 					if (force) this.checked = !this.checked;
 					
