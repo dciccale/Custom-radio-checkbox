@@ -3,7 +3,7 @@ $(function() {
 		sections = ['view','html'], section, lastTab,
 		tabClick = function(e) {
 			e.preventDefault();
-			tab = $(this),
+			var tab = $(this),
 			section = tab.attr('href').replace('#','');			
 
 			if(!$.isEmptyObject(lastTab)) {
