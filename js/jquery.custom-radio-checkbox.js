@@ -44,8 +44,8 @@
 			// if context element is not present return nothing, can't chain anyway
 			if(!context.length) return;
 			
-			var rds = context.find('input:radio').addClass('hideInput'), // find & hide radios
-				chs = context.find('input:checkbox').addClass('hideInput'); // find & hide checkboxes
+			var rds = context.find('input[type=radio]').addClass('hideInput'), // find & hide radios
+				chs = context.find('input[type=checkbox]').addClass('hideInput'); // find & hide checkboxes
 			
 			// only if there are radios
 			if(rds.length) {
@@ -56,7 +56,7 @@
 				});
 				
 				// bind radio change event
-				context.delegate('input:' + rds.type, 'change.crc', function (e, force) {
+				context.delegate('input[type=' + rds.type + ']', 'change.crc', function (e, force) {
 					// uncheck previous and remove checked class
 					if (!force || !this.checked) {
 						// filter by name and remove class from the last radio checked
@@ -78,7 +78,7 @@
 				});
 				
 				// bind checkbox change event
-				context.delegate('input:' + chs.type, 'change.crc', function (e, force) {
+				context.delegate('input[type=' + chs.type + ']', 'change.crc', function (e, force) {
 					// if force set to true, change state
 					if (force) this.checked = !this.checked;
 					
