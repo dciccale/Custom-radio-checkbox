@@ -44,8 +44,8 @@
 			// if context element is not present return nothing, can't chain anyway
 			if(!context.length) return;
 			
-			var rds = context.find('input[type=radio]').addClass('hideInput'), // find & hide radios
-				chs = context.find('input[type=checkbox]').addClass('hideInput'); // find & hide checkboxes
+			var rds = context.find('input[type=radio]:not(.hideInput)').addClass('hideInput'), // find & hide radios
+				chs = context.find('input[type=checkbox]:not(.hideInput)').addClass('hideInput'); // find & hide checkboxes
 			
 			// only if there are radios
 			if(rds.length) {
