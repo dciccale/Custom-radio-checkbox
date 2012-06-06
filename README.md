@@ -8,8 +8,7 @@ IE6+, FF, Chrome, Safari, Opera
 
 ## Lightweight
 - JS compressed & gzipped: 553 bytes
-- Required css compressed: 368 bytes
-- Default image: 759 bytes
+- CSS compressed & gzipped: 210 bytes
 
 ## Other features
 - Semantic HTML
