@@ -18,7 +18,7 @@ label{cursor:pointer;font-size:14px}
 strong{font-weight:bold}
 .separator {overflow:hidden;height:25px;margin-bottom:25px;border-bottom:1px solid #999;clear:left}
 #submit {margin:0}
-#submit input {padding:5px 15px;border:2px solid grey;font-size:14px;cursor:pointer;background-color:#ccc;color:#333;font-weight:bold}
+#submit input {padding:5px 15px;border:2px solid gray;font-size:14px;cursor:pointer;background-color:#ccc;color:#333;font-weight:bold}
 #form {margin-bottom:15px}
 #demo_ajax {width:600px;height:250px;border:3px solid #999;overflow:auto;margin-bottom:15px;background-color:#fff;padding:30px;position:relative}
 pre {background-color:#333;color:#ccc}
