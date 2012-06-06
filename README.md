@@ -15,7 +15,7 @@ IE6+, FF, Chrome, Safari, Opera
 - Semantic HTML
 - Fast!
 - Easy to use (auto-initialize, include required files into your website and you're done)
-- SUpports ajax loaded content, just call $('selector').customRadioCheckbox(); (see demo-ajax.html)
+- Supports ajax loaded content, just call $('selector').customRadioCheckbox(); (see demo-ajax.html)
 
 ## License
 See [LICENSE.txt](https://raw.github.com/dciccale/Custom-radio-checkbox/master/LICENSE.txt)
