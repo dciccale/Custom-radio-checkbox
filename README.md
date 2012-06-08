@@ -7,8 +7,8 @@ All versions of the following browsers are supported
 IE6+, FF, Chrome, Safari, Opera
 
 ## Lightweight
-- JS compressed & gzipped: 553 bytes
-- CSS compressed & gzipped: 210 bytes
+- JS compressed & gzipped: 505 bytes
+- CSS compressed & gzipped: 206 bytes
 
 ## Other features
 - Semantic HTML
