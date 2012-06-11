@@ -17,5 +17,7 @@ Size compressed & gzipped
 - Easy to use (auto-initialize, include required files into your website and you're done)
 - Supports ajax loaded content, just call $('selector').customRadioCheckbox(); (see demo-ajax.html)
 
+*Requires jQuery 1.4.4+*
+
 ## License
 See [LICENSE.txt](https://raw.github.com/dciccale/Custom-radio-checkbox/master/LICENSE.txt)
