@@ -5,6 +5,11 @@
   */
 (function ($) {
   $.fn.customRadioCheckbox = function (options) {
+    // don't act on absent elements, can't chain anyway
+    if (!this[0]) {
+      return;
+    }
+
       // checked suffix
     var checkedSuffix = '-checked',
 
@@ -21,41 +26,37 @@
         }
       },
 
-      // fake input tag
-      fakeInputTag = $('<i>').bind('click.crc', forceChange),
-
       // function that inserts the fake input
       insertFakeInput = function (inputs) {
-        var input, type = inputs.type, l = inputs.length, fakeInputClone;
+        var type = inputs.type,
+          l = inputs.length,
+          fakeInputElem, input;
 
         while (l--) {
           input = inputs[l];
 
           // fake input
-          fakeInputClone = fakeInputTag.clone(true).addClass(type);
+          fakeInputElem = $('<i>', { 'class': type }).bind('click.crc', forceChange);
 
           // if is already checked add checked class
           if (input.checked) {
-            fakeInputClone.addClass(type + checkedSuffix);
+            fakeInputElem.addClass(type + checkedSuffix);
           }
 
           // insert the fake input after the input
-          input.parentNode.insertBefore(fakeInputClone[0], input.nextSibling);
+          input.parentNode.insertBefore(fakeInputElem[0], input.nextSibling);
         }
       };
 
     return this.each(function () {
-      // if context element is not present return undefined, can't chain anyway
-      if (!this) {
-        return;
-      }
 
-      var $context = $(this), rds, chs, rdsCache = {};
-
-      // find & hide radios
-      rds = $context.find('input[type=radio]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass);
-      // find & hide checkboxes
-      chs = $context.find('input[type=checkbox]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass);
+      var $context = $(this),
+        // find & hide radios
+        rds = $context.find('input[type=radio]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass),
+        // find & hide checkboxes
+        chs = $context.find('input[type=checkbox]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass),
+        // store each radio group to access later
+        rdsCache = {};
 
       // only apply if there are radios
       if (rds.length) {
@@ -65,7 +66,7 @@
         insertFakeInput(rds);
 
         // bind radio change event
-        rds.on('change.crc', function (e, force) {
+        rds.bind('change.crc', function (e, force) {
           // uncheck previous and remove checked class
           if (!force || !this.checked) {
             // filter by name and remove class from the last radio checked
@@ -98,7 +99,7 @@
         insertFakeInput(chs);
 
         // bind checkbox change event
-        chs.on('change.crc', function (e, force) {
+        chs.bind('change.crc', function (e, force) {
           // force change state
           if (force) {
             this.checked = !this.checked;
