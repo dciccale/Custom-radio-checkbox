@@ -64,7 +64,15 @@
 
         // insert each fake radio
         insertFakeInput(rds);
-
+        
+        //initialize rdsCache for prechecked inputs
+        rds.each(function(i,e){
+         if(e.checked){
+          rdsCache[e.name] = {};
+          rdsCache[e.name].checked = $(e.nextSibling).addClass(rds.type + checkedSuffix);
+         }
+        });
+        
         // bind radio change event
         rds.bind('change.crc', function (e, force) {
           // uncheck previous and remove checked class
