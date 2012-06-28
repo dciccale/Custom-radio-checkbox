@@ -1,8 +1,8 @@
- /*!
-  * jQuery Custom Radio Checkbox Plugin
-  * Copyright (c) 2012 Denis Ciccale (@tdecs)
-  * Released under MIT license (https://raw.github.com/dciccale/Custom-radio-checkbox/master/LICENSE.txt)
-  */
+/*!
+ * jQuery Custom Radio Checkbox Plugin
+ * Copyright (c) 2012 Denis Ciccale (@tdecs)
+ * Released under MIT license (https://raw.github.com/dciccale/Custom-radio-checkbox/master/LICENSE.txt)
+ */
 (function ($) {
   $.fn.customRadioCheckbox = function (options) {
     // don't act on absent elements, can't chain anyway
@@ -10,7 +10,7 @@
       return;
     }
 
-      // checked suffix
+    // checked suffix
     var checkedSuffix = '-checked',
 
       // css class used to hide inputs
@@ -30,18 +30,14 @@
       insertFakeInput = function (inputs) {
         var type = inputs.type,
           l = inputs.length,
-          fakeInputElem, input;
+          fakeInputElem,
+          input;
 
         while (l--) {
           input = inputs[l];
 
           // fake input
-          fakeInputElem = $('<i>', { 'class': type }).bind('click.crc', forceChange);
-
-          // if is already checked add checked class
-          if (input.checked) {
-            fakeInputElem.addClass(type + checkedSuffix);
-          }
+          fakeInputElem = $('<i>').addClass(type + (input.checked ? ' ' + type + checkedSuffix : '')).bind('click.crc', forceChange);
 
           // insert the fake input after the input
           input.parentNode.insertBefore(fakeInputElem[0], input.nextSibling);
@@ -55,7 +51,7 @@
         rds = $context.find('input[type=radio]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass),
         // find & hide checkboxes
         chs = $context.find('input[type=checkbox]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass),
-        // store each radio group to access later
+        // storage for each radio group to use later
         rdsCache = {};
 
       // only apply if there are radios
@@ -64,15 +60,15 @@
 
         // insert each fake radio
         insertFakeInput(rds);
-        
-        //initialize rdsCache for prechecked inputs
-        rds.each(function(i,e){
-         if(e.checked){
-          rdsCache[e.name] = {};
-          rdsCache[e.name].checked = $(e.nextSibling).addClass(rds.type + checkedSuffix);
-         }
+
+        // initialize rdsCache for prechecked inputs
+        rds.each(function () {
+          if (this.checked) {
+            rdsCache[this.name] = {};
+            rdsCache[this.name].checked = $(this.nextSibling).addClass(rds.type + checkedSuffix);
+          }
         });
-        
+
         // bind radio change event
         rds.bind('change.crc', function (e, force) {
           // uncheck previous and remove checked class
