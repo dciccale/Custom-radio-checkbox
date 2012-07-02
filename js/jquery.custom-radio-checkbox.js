@@ -52,7 +52,9 @@
         // find & hide checkboxes
         chs = $context.find('input[type=checkbox]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass),
         // storage for each radio group to use later
-        rdsCache = {};
+        rdsCache = {},
+        rdsLength = rds.length,
+        rd;
 
       // only apply if there are radios
       if (rds.length) {
@@ -62,12 +64,12 @@
         insertFakeInput(rds);
 
         // initialize rdsCache for prechecked inputs
-        rds.each(function () {
-          if (this.checked) {
-            rdsCache[this.name] = {};
-            rdsCache[this.name].checked = $(this.nextSibling).addClass(rds.type + checkedSuffix);
+        while (rdsLength--) {
+          rd = rds[rdsLength];
+          if (rd.checked) {
+            (rdsCache[rd.name] = {}).checked = $(rd.nextSibling);
           }
-        });
+        }
 
         // bind radio change event
         rds.bind('change.crc', function (e, force) {
@@ -76,7 +78,7 @@
             // filter by name and remove class from the last radio checked
             // save this collection in cache obj for faster use
             if (!rdsCache[this.name]) {
-              rdsCache[this.name] = rds.filter('[name="' + this.name + '"]').next();
+              rdsCache[this.name] = {};
             }
 
             // uncheck last checked from this group
