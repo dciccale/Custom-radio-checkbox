@@ -34,6 +34,7 @@
           input;
 
         while (l--) {
+          // current input
           input = inputs[l];
 
           // fake input
@@ -53,6 +54,7 @@
         chs = $context.find('input[type=checkbox]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass),
         // storage for each radio group to use later
         rdsCache = {},
+        // total radios
         rdsLength = rds.length,
         rd;
 
