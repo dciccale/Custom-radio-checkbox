@@ -13,10 +13,10 @@ Size compressed & gzipped
 - JS: 513 bytes
 - CSS: 206 bytes
 
-## Other features
+## Features
 - Semantic HTML
-- Very Fast!
-- Easy to use (auto-initialize, include required files into your website and you're done)
+- Blazing Fast!
+- Easy to use (just include required files into your website and you're done!)
 - Supports ajax loaded content, just call `$('selector').customRadioCheckbox();` (see [demo4.html](http://dciccale.github.com/Custom-radio-checkbox/demo4.html))
 
 ## Todo
