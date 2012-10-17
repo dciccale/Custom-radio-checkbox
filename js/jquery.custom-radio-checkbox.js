@@ -1,11 +1,16 @@
- /*!
-  * jQuery Custom Radio Checkbox Plugin
-  * Copyright (c) 2012 Denis Ciccale (@tdecs)
-  * Released under MIT license (https://raw.github.com/dciccale/Custom-radio-checkbox/master/LICENSE.txt)
-  */
+/*!
+ * jQuery Custom Radio Checkbox Plugin
+ * Copyright (c) 2012 Denis Ciccale (@tdecs)
+ * Released under MIT license (https://raw.github.com/dciccale/Custom-radio-checkbox/master/LICENSE.txt)
+ */
 (function ($) {
   $.fn.customRadioCheckbox = function (options) {
-      // checked suffix
+    // don't act on absent elements, can't chain anyway
+    if (!this[0]) {
+      return;
+    }
+
+    // checked suffix
     var checkedSuffix = '-checked',
 
       // css class used to hide inputs
@@ -21,41 +26,37 @@
         }
       },
 
-      // fake input tag
-      fakeInputTag = $('<i>').bind('click.crc', forceChange),
-
       // function that inserts the fake input
       insertFakeInput = function (inputs) {
-        var input, type = inputs.type, l = inputs.length, fakeInputClone;
+        var type = inputs.type,
+          l = inputs.length,
+          fakeInputElem,
+          input;
 
         while (l--) {
+          // current input
           input = inputs[l];
 
           // fake input
-          fakeInputClone = fakeInputTag.clone(true).addClass(type);
-
-          // if is already checked add checked class
-          if (input.checked) {
-            fakeInputClone.addClass(type + checkedSuffix);
-          }
+          fakeInputElem = $('<i>').addClass(type + (input.checked ? ' ' + type + checkedSuffix : '')).bind('click.crc', forceChange);
 
           // insert the fake input after the input
-          input.parentNode.insertBefore(fakeInputClone[0], input.nextSibling);
+          input.parentNode.insertBefore(fakeInputElem[0], input.nextSibling);
         }
       };
 
     return this.each(function () {
-      // if context element is not present return undefined, can't chain anyway
-      if (!this) {
-        return;
-      }
 
-      var $context = $(this), rds, chs, rdsCache = {};
-
-      // find & hide radios
-      rds = $context.find('input[type=radio]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass);
-      // find & hide checkboxes
-      chs = $context.find('input[type=checkbox]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass);
+      var $context = $(this),
+        // find & hide radios
+        rds = $context.find('input[type=radio]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass),
+        // find & hide checkboxes
+        chs = $context.find('input[type=checkbox]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass),
+        // storage for each radio group to use later
+        rdsCache = {},
+        // total radios
+        rdsLength = rds.length,
+        rd;
 
       // only apply if there are radios
       if (rds.length) {
@@ -64,14 +65,22 @@
         // insert each fake radio
         insertFakeInput(rds);
 
+        // initialize rdsCache for prechecked inputs
+        while (rdsLength--) {
+          rd = rds[rdsLength];
+          if (rd.checked) {
+            (rdsCache[rd.name] = {}).checked = $(rd.nextSibling);
+          }
+        }
+
         // bind radio change event
-        rds.on('change.crc', function (e, force) {
+        rds.bind('change.crc', function (e, force) {
           // uncheck previous and remove checked class
           if (!force || !this.checked) {
             // filter by name and remove class from the last radio checked
             // save this collection in cache obj for faster use
             if (!rdsCache[this.name]) {
-              rdsCache[this.name] = rds.filter('[name="' + this.name + '"]').next();
+              rdsCache[this.name] = {};
             }
 
             // uncheck last checked from this group
@@ -98,7 +107,7 @@
         insertFakeInput(chs);
 
         // bind checkbox change event
-        chs.on('change.crc', function (e, force) {
+        chs.bind('change.crc', function (e, force) {
           // force change state
           if (force) {
             this.checked = !this.checked;
