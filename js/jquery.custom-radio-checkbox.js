@@ -1,6 +1,6 @@
 /*!
  * jQuery Custom Radio Checkbox Plugin
- * Copyright (c) 2012 Denis Ciccale (@tdecs)
+ * Copyright (c) 2012-2014 Denis Ciccale (@tdecs)
  * Released under MIT license (https://raw.github.com/dciccale/Custom-radio-checkbox/master/LICENSE.txt)
  */
 (function ($) {
@@ -11,52 +11,59 @@
     }
 
     // checked suffix
-    var checkedSuffix = '-checked',
+    var checkedSuffix = '-checked';
 
-      // css class used to hide inputs
-      hiddenInputClass = 'rc-hidden',
+    // css class used to hide inputs
+    var hiddenInputClass = 'rc-hidden';
 
-      // function to force the input change when clicking
-      // on a fake input that is not wrapped by a label tag
-      forceChange = function () {
-        var $this = $(this);
-        // only trigger if the input is not inside a label
-        if (!$this.closest('label')[0]) {
-          $this.prev().trigger('change.crc', [true]);
-        }
-      },
+    // function to force the input change when clicking
+    // on a fake input that is not wrapped by a label tag
+    var forceChange = function () {
+      var $this = $(this);
+      // only trigger if the input is not inside a label
+      if (!$this.closest('label')[0]) {
+        $this.prev().trigger('change.crc', [true]);
+      }
+    };
 
-      // function that inserts the fake input
-      insertFakeInput = function (inputs) {
-        var type = inputs.type,
-          l = inputs.length,
-          fakeInputElem,
-          input;
+    // function that inserts the fake input
+    var insertFakeInput = function (inputs) {
+      var type = inputs.type;
+      var l = inputs.length;
+      var fakeInputElem, input;
 
-        while (l--) {
-          // current input
-          input = inputs[l];
+      while (l--) {
+        // current input
+        input = inputs[l];
 
-          // fake input
-          fakeInputElem = $('<i>').addClass(type + (input.checked ? ' ' + type + checkedSuffix : '')).bind('click.crc', forceChange);
+        // fake input
+        fakeInputElem = $('<i>')
+          .addClass(type + (input.checked ? ' ' + type + checkedSuffix : ''))
+          .bind('click.crc', forceChange);
 
-          // insert the fake input after the input
-          input.parentNode.insertBefore(fakeInputElem[0], input.nextSibling);
-        }
-      };
+        // insert the fake input after the input
+        input.parentNode.insertBefore(fakeInputElem[0], input.nextSibling);
+      }
+    };
 
     return this.each(function () {
 
-      var $context = $(this),
-        // find & hide radios
-        rds = $context.find('input[type=radio]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass),
-        // find & hide checkboxes
-        chs = $context.find('input[type=checkbox]:not(.' + hiddenInputClass + ')').addClass(hiddenInputClass),
-        // storage for each radio group to use later
-        rdsCache = {},
-        // total radios
-        rdsLength = rds.length,
-        rd;
+      var $context = $(this);
+
+      // find & hide radios
+      var rds = $context.find('input[type=radio]:not(.' + hiddenInputClass + ')')
+        .addClass(hiddenInputClass);
+
+      // find & hide checkboxes
+      var chs = $context.find('input[type=checkbox]:not(.' + hiddenInputClass + ')')
+        .addClass(hiddenInputClass);
+
+      // storage for each radio group to optimize next lookup
+      var rdsCache = {};
+
+      // total radios
+      var rdsLength = rds.length;
+      var rd;
 
       // only apply if there are radios
       if (rds.length) {
@@ -77,6 +84,7 @@
         rds.bind('change.crc', function (e, force) {
           // uncheck previous and remove checked class
           if (!force || !this.checked) {
+
             // filter by name and remove class from the last radio checked
             // save this collection in cache obj for faster use
             if (!rdsCache[this.name]) {

@@ -10,7 +10,7 @@ IE6+, FireFox, Chrome, Safari, Opera
 
 ## Lightweight
 Size compressed & gzipped
-- JS: 513 bytes
+- JS: 511 bytes
 - CSS: 206 bytes
 
 ## Features
@@ -18,9 +18,6 @@ Size compressed & gzipped
 - Blazing Fast!
 - Easy to use (just include required files into your website and you're done!)
 - Supports ajax loaded content, just call `$('selector').customRadioCheckbox();` (see [demo4.html](http://dciccale.github.com/Custom-radio-checkbox/demo4.html))
-
-## Todo
-- Accessibility
 
 ## License
 See [LICENSE.txt](https://raw.github.com/dciccale/Custom-radio-checkbox/master/LICENSE.txt)
