@@ -18,35 +18,35 @@
 <a href="http://github.com/dciccale/Custom-radio-checkbox"><img style="position: absolute; top: 0; right: 0; border: 0" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
 <p id="menu">
-	<a href="index.html" title="input inside label">Demo 1</a>
-	<a href="demo2.html" title="input inside label without 'for' attribute">Demo 2</a>
-	<a href="demo3.html" title="label next to input">Demo 3</a>
-	<a class="current-demo" href="demo4.html" title="ajax loaded content">Demo 4</a>
+  <a href="index.html" title="input inside label">Demo 1</a>
+  <a href="demo2.html" title="input inside label without 'for' attribute">Demo 2</a>
+  <a href="demo3.html" title="label next to input">Demo 3</a>
+  <a class="current-demo" href="demo4.html" title="ajax loaded content">Demo 4</a>
 </p>
 
 <h2>Content loaded via AJAX</h2>
 <p>*important: Use the <code>&quot;for&quot;</code> attribute in the <code>&lt;label&gt;</code> to support IE6</p>
 <p>Use $('selector').customRadioCheckbox(); to replace radios &amp; checkboxes after the content is loaded</p>
 <ul id="tabs" class="clearfix">
-	<li><a href="#view" class="current">VIEW</a></li>
-	<li><a href="#html">HTML</a></li>
+  <li><a href="#view" class="current">VIEW</a></li>
+  <li><a href="#html">HTML</a></li>
 </ul>
 <div id="content">
-	<div id="view" class="section">
-		<p><a href="ajax-loaded-content.html" id="load_content">Load content</a></p>
-		<div id="demo_ajax"></div>
+  <div id="view" class="section">
+    <p><a href="ajax-loaded-content.html" id="load_content">Load content</a></p>
+    <div id="demo_ajax"></div>
 
-		<p><strong>Form result:</strong> <span id="result"></span></p>
-	</div>
-	<div id="html" class="section">
-		<p>The HTML from ajax-loaded-content.html</p>
-		<pre>
-			<code id="html_output"></code>
-		</pre>
-		<p>And the jQuery to load the content:</p>
-		<p>After loading the content, form.customRadioCheckbox() is called to replace radios &amp; checkboxes</p>
-		<pre>
-			<code>
+    <p><strong>Form result:</strong> <span id="result"></span></p>
+  </div>
+  <div id="html" class="section">
+    <p>The HTML from ajax-loaded-content.html</p>
+    <pre>
+      <code id="html_output"></code>
+    </pre>
+    <p>And the jQuery to load the content:</p>
+    <p>After loading the content, form.customRadioCheckbox() is called to replace radios &amp; checkboxes</p>
+    <pre>
+      <code>
 $(function() {
 var link = $(&#39;#load_content&#39;),
 url = link.attr(&#39;href&#39;),
@@ -55,45 +55,45 @@ container = $(&#39;#demo_ajax&#39;);
 link.click(function(e) {
 e.preventDefault();
 container.load(url, function() {
-	var form = $(&#39;#form&#39;);
-	$(&#39;#html_output&#39;).text(form.parent().html());
+  var form = $(&#39;#form&#39;);
+  $(&#39;#html_output&#39;).text(form.parent().html());
 
-	// customize radio and checkbox for the loaded content
-	// and handle the submit function to show the results
-	form.customRadioCheckbox()
-	.submit(function(e) {
-		e.preventDefault();
-		$(&#39;#result&#39;).html(form.serialize());
-	});
+  // customize radio and checkbox for the loaded content
+  // and handle the submit function to show the results
+  form.customRadioCheckbox()
+  .submit(function(e) {
+    e.preventDefault();
+    $(&#39;#result&#39;).html(form.serialize());
+  });
 });
 });
 });
-			</code>
-		</pre>
-	</div>
+      </code>
+    </pre>
+  </div>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="js/jquery.custom-radio-checkbox.min.js"></script>
 <script src="js/demo.js"></script>
 <script>
 $(function() {
-	var link = $('#load_content'),
-		url = link.attr('href'),
-		container = $('#demo_ajax');
+  var link = $('#load_content'),
+    url = link.attr('href'),
+    container = $('#demo_ajax');
 
-	link.click(function(e) {
-		e.preventDefault();
-		container.load(url, function() {
-			var form = $('#form');
-			$('#html_output').text(form.parent().html());
-			// customize radio and checkbox for the loaded content
-			// and handle the submit function to show the results
-			form.customRadioCheckbox()
-			.submit(function(e) {
-				e.preventDefault();
-				$('#result').html(form.serialize());
-			});
-		});
-	});
+  link.click(function(e) {
+    e.preventDefault();
+    container.load(url, function() {
+      var form = $('#form');
+      $('#html_output').text(form.parent().html());
+      // customize radio and checkbox for the loaded content
+      // and handle the submit function to show the results
+      form.customRadioCheckbox()
+      .submit(function(e) {
+        e.preventDefault();
+        $('#result').html(form.serialize());
+      });
+    });
+  });
 });
 </script>
