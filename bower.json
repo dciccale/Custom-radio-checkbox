@@ -1,0 +1,22 @@
+{
+  "name": "custom-radio-checkbox",
+  "version": "0.0.1",
+  "authors": [
+    "Denis Ciccale <dciccale@gmail.com>"
+  ],
+  "description": "jQuery plugin to customize native radios and checkboxes with your own design",
+  "main": "./js/jquery.custom-radio-checkbox.js",
+  "keywords": [
+    "checkbox",
+    "radio"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/dciccale/Custom-radio-checkbox",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
